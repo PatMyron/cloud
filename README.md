@@ -1,4 +1,14 @@
 ```shell
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
+5443 UpdateType
+5443 Required
+5443 Documentation
+4283 PrimitiveType
+1493 Type
+ 448 ItemType
+ 445 DuplicatesAllowed
+ 352 PrimitiveItemType
+
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '"(.*?)::' | sort | uniq -c | sort -nr
 1389 AWS
    4 Alexa
