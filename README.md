@@ -1,5 +1,6 @@
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
+# missing a few https://github.com/awsdocs/aws-cloudformation-user-guide/issues/4#issuecomment-503828259
 5443 UpdateType
 5443 Required
 5443 Documentation
@@ -8,6 +9,43 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
  448 ItemType
  445 DuplicatesAllowed
  352 PrimitiveItemType
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("UpdateType": ".*?)"' | sort | uniq -c | sort -nr
+4030 "UpdateType": "Mutable
+1370 "UpdateType": "Immutable
+  47 "UpdateType": "Conditional
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("Required": .*?),' | sort | uniq -c | sort -nr
+3689 "Required": false
+1758 "Required": true
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("DuplicatesAllowed": .*?),' | sort | uniq -c | sort -nr
+ 313 "DuplicatesAllowed": false
+ 132 "DuplicatesAllowed": true
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("PrimitiveType": .*?),' | sort | uniq -c | sort -nr
+3046 "PrimitiveType": "String"
+ 382 "PrimitiveType": "Integer"
+ 368 "PrimitiveType": "Boolean"
+  99 "PrimitiveType": "Json"
+  63 "PrimitiveType": "Double"
+   8 "PrimitiveType": "Long"
+   4 "PrimitiveType": "Timestamp"
+   1 "PrimitiveType": "Map"
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("PrimitiveItemType": .*?),' | sort | uniq -c | sort -nr
+ 349 "PrimitiveItemType": "String"
+   2 "PrimitiveItemType": "Boolean"
+   1 "PrimitiveItemType": "Json"
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("Type": .*?),' | sort | uniq -c | sort -nr
+ 735 "Type": "List"
+  48 "Type": "Map"
+  ..
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("ItemType": .*?),' | sort | uniq -c | sort -nr
+ 108 "ItemType": "Tag"
+ ...
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '"(.*?)::' | sort | uniq -c | sort -nr
 1389 AWS
