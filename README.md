@@ -1,9 +1,9 @@
 ```shell
-$ pcregrep -o1 '"(.*?)::' CloudFormationResourceSpecification.json | sort | uniq -c | sort -nr
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '"(.*?)::' | sort | uniq -c | sort -nr
 1389 AWS
    4 Alexa
 
-$ pcregrep -o1 '::(.*)::' CloudFormationResourceSpecification.json | sort | uniq -c | sort -nr
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | sort -nr
  129 EC2
   64 Greengrass
   52 EMR
