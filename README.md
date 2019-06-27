@@ -1,6 +1,6 @@
-![](services-per-region.png)
-![](resources-per-region.png)
-![](resources-per-service.png)
+![](img/services-per-region.png)
+![](img/resources-per-region.png)
+![](img/resources-per-service.png)
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
 # missing a few https://github.com/awsdocs/aws-cloudformation-user-guide/issues/4#issuecomment-503828259
