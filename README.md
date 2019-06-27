@@ -189,4 +189,24 @@ $ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-g
       55
       51
       43
+
+$ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 "//(.*?).cloudfront.*" | xargs -n 1 -I{} bash -c 'curl -s -N --compressed https://{}.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l' | sort -nr
+     429 # resource types per region
+     429
+     428
+     394
+     390
+     385
+     362
+     334
+     332
+     327
+     325
+     301
+     291
+     266
+     260
+     228
+     189
+
 ```
