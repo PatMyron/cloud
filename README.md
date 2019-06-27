@@ -153,21 +153,21 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
    1 ASK
 
 $ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 "//(.*?).cloudfront.*"
-d2senuesg1djtx # CloudFormationResourceSpecification buckets
-d2zq80gdmjim8k
-d1ane3fvebulky
-doigdx0kgq9el
-d2stg8d246z9di
-d33vqc0rt9ld30
-d2s8ygphhesbe7
-d1mta8qj7i28i2
-d3teyb21fexa9r
-d1742qcu2c1ncx
-d2d0mfegowb3wk
-diy8iv58sj6ba
-d3c9jyj3w509b0
-d1uauaxba7bl26
-dnwj8swjjbsbt
-d68hl49wbnanq
-d201a2mn26r7lk
+  d2senuesg1djtx # CloudFormationResourceSpecification buckets
+  d2zq80gdmjim8k
+  d1ane3fvebulky
+  doigdx0kgq9el
+  d2stg8d246z9di
+  d33vqc0rt9ld30
+  d2s8ygphhesbe7
+  d1mta8qj7i28i2
+  d3teyb21fexa9r
+  d1742qcu2c1ncx
+  d2d0mfegowb3wk
+  diy8iv58sj6ba
+  d3c9jyj3w509b0
+  d1uauaxba7bl26
+  dnwj8swjjbsbt
+  d68hl49wbnanq
+  d201a2mn26r7lk
 ```
