@@ -171,41 +171,41 @@ $ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-g
   d68hl49wbnanq
   d201a2mn26r7lk
 
-$ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 "//(.*?).cloudfront.*" | xargs -n 1 -I{} bash -c 'curl -s -N --compressed https://{}.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::" | sort | uniq -c | wc -l' | sort -nr
-      93 # services per region
-      93
-      93
-      86
-      84
-      84
-      84
-      76
-      75
-      74
-      69
-      68
-      64
-      59
-      55
-      51
-      43
+$ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::" | sort | uniq -c | wc -l | xargs echo -n; echo " $0"' | sort -nr
+93 us-west-2 # services per region
+93 us-east-1
+93 eu-west-1
+86 ap-northeast-1
+84 us-east-2
+84 eu-central-1
+84 ap-southeast-2
+76 ap-southeast-1
+75 ap-northeast-2
+74 eu-west-2
+69 ap-south-1
+68 us-west-1
+64 ca-central-1
+59 eu-west-3
+55 sa-east-1
+51 eu-north-1
+43 ap-northeast-3
 
-$ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 "//(.*?).cloudfront.*" | xargs -n 1 -I{} bash -c 'curl -s -N --compressed https://{}.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l' | sort -nr
-     429 # resource types per region
-     429
-     428
-     394
-     390
-     385
-     362
-     334
-     332
-     327
-     325
-     301
-     291
-     266
-     260
-     228
-     189
+$ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l | xargs echo -n; echo " $0"' | sort -nr
+429 us-east-1 # resource types per region
+429 eu-west-1
+428 us-west-2
+394 ap-northeast-1
+390 eu-central-1
+385 ap-southeast-2
+362 us-east-2
+334 ap-northeast-2
+332 ap-southeast-1
+327 eu-west-2
+325 ap-south-1
+301 us-west-1
+291 ca-central-1
+266 eu-west-3
+260 sa-east-1
+228 eu-north-1
+189 ap-northeast-3
 ```
