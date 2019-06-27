@@ -208,5 +208,4 @@ $ curl -s -N https://raw.githubusercontent.com/awsdocs/aws-cloudformation-user-g
      260
      228
      189
-
 ```
