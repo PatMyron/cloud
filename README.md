@@ -4,7 +4,7 @@
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
 # missing a few https://github.com/awsdocs/aws-cloudformation-user-guide/issues/4#issuecomment-503828259
-5443 UpdateType
+5443 UpdateType # property fields
 5443 Required
 5443 Documentation
 4283 PrimitiveType
@@ -12,6 +12,17 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
  448 ItemType
  445 DuplicatesAllowed
  352 PrimitiveItemType
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^      "(.*?)"' | sort | uniq -c | sort -nr
+1448 Documentation # resource fields
+1444 Properties
+ 144 Attributes
+   4 UpdateType
+   4 Type
+   4 Required
+   4 ItemType
+   2 PrimitiveType
+   1 AdditionalProperties
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("UpdateType": ".*?)"' | sort | uniq -c | sort -nr
 4030 "UpdateType": "Mutable
