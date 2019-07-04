@@ -222,4 +222,36 @@ $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-
 260 sa-east-1
 228 eu-north-1
 189 ap-northeast-3
+
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^        "(.*?)"' | sort | uniq -c | sort -nr | head -n 30
+ 223 Name
+ 137 Tags
+ 107 Description
+  84 Type
+  77 Arn
+  59 Value
+  46 Id
+  44 Key
+  43 RoleArn
+  41 Enabled
+  25 Port
+  24 Parameters
+  24 InstanceType
+  22 Version
+  22 AvailabilityZone
+  21 SubnetId
+  20 SubnetIds
+  19 Values
+  19 SecurityGroupIds
+  18 VpcId
+  17 RoleARN
+  17 DomainName
+  16 KmsKeyId
+  16 ApiId
+  15 Protocol
+  15 MetricName
+  14 Path
+  14 ApplicationName
+  14 ApplicationId
+  13 Attributes
 ```
