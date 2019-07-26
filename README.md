@@ -203,6 +203,8 @@ $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-
 56 sa-east-1
 51 eu-north-1
 48 us-gov-west-1
+46 cn-north-1
+46 cn-northwest-1
 45 ap-east-1
 45 us-gov-east-1
 43 ap-northeast-3
@@ -225,7 +227,9 @@ $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-
 263 sa-east-1
 228 eu-north-1
 222 us-gov-west-1
+211 cn-north-1
 210 us-gov-east-1
+206 cn-northwest-1
 203 ap-east-1
 189 ap-northeast-3
 
