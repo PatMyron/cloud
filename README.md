@@ -1,6 +1,8 @@
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
 ![](img/resources-per-service.png)
+![](img/azure-services-per-region.png)
+![](img/gcp-products-per-region.png)
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
 # missing a few https://github.com/awsdocs/aws-cloudformation-user-guide/issues/4#issuecomment-503828259
@@ -264,4 +266,88 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
   14 ApplicationName
   14 ApplicationId
   13 Attributes
+```
+
+```python
+from bs4 import BeautifulSoup
+
+# save webpage locally to ensure table has fully loaded
+soup = BeautifulSoup(open('https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all&regions=all'), 'html.parser')
+for row in soup.find_all('tr', class_='service-row', attrs={'data-product-slug' : True}):
+    for cell in row.find_all(attrs={'data-region-slug' : True}):
+        if 'Not available' not in cell.text:
+            print(cell['data-region-slug'])
+```
+
+```shell
+$ python azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
+ 119 europe-west # Azure services per region
+ 116 europe-north
+ 114 us-east
+ 113 us-east-2
+ 113 australia-east
+ 112 asia-pacific-southeast
+ 111 us-south-central
+ 108 us-west-2
+ 108 japan-east
+ 107 us-west
+ 105 united-kingdom-south
+ 104 us-central
+ 101 canada-central
+ 101 brazil-south
+ 101 asia-pacific-east
+ 100 central-india
+  98 us-north-central
+  97 korea-central
+  96 usgov-virginia
+  93 uae-north
+  92 us-west-central
+  92 france-central
+  89 australia-southeast
+  87 south-africa-north
+  87 japan-west
+  86 canada-east
+  85 united-kingdom-west
+  84 china-east-2
+  83 south-india
+  74 west-india
+  72 usgov-texas
+  69 korea-south
+  68 usgov-arizona
+  66 china-north
+  63 china-east
+  61 china-north-2
+  58 us-dod-central
+  58 australia-central
+  55 us-dod-east
+  54 germany-central
+  54 australia-central-2
+  53 south-africa-west
+  52 france-south
+  50 uae-central
+  49 germany-northeast
+  44 usgov-iowa
+```
+
+```shell
+25 asia-northeast1 # Google Cloud products per region
+23 us-east4
+23 us-east1
+22 us-central1
+22 europe-west1
+22 asia-east2
+21 europe-west2
+21 australia-southeast1
+21 asia-south1
+20 us-west2
+20 southamerica-east1
+20 northamerica-northeast1
+19 asia-southeast1
+19 asia-northeast2
+18 asia-east1
+17 europe-west6
+17 europe-west3
+16 us-west1
+16 europe-west4
+16 europe-north1
 ```
