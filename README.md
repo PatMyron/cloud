@@ -209,6 +209,7 @@ $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-
 46 cn-northwest-1
 45 ap-east-1
 45 us-gov-east-1
+44 me-south-1
 43 ap-northeast-3
 
 $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l | xargs echo -n; echo " $0"' | sort -nr
@@ -233,6 +234,7 @@ $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-
 210 us-gov-east-1
 206 cn-northwest-1
 203 ap-east-1
+189 me-south-1
 189 ap-northeast-3
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^        "(.*?)"' | sort | uniq -c | sort -nr | head -n 30
