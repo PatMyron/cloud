@@ -7,7 +7,7 @@
 ![](img/gcp-products-per-region.png)
 
 ```shell
-for REGION in `aws ec2 describe-regions --output text | cut -f4`
+for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
 do
   echo $REGION
   curl -s https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/$REGION/index.json | jq -r '.products[].attributes["instanceType"]' | sort -u | grep '\.' | sed 's/\..*//' | sort -u
