@@ -1,5 +1,7 @@
+![](img/ec2-unit-prices.png)
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
+![](img/resources-per-region-by-region-launch-date.png)
 ![](img/resources-per-service.png)
 ![](img/azure-services-per-region.png)
 ![](img/gcp-products-per-region.png)
