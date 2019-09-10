@@ -3,12 +3,12 @@
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
 ![](img/resources-per-region-by-region-launch-date.png)
-![](img/resources-per-service.png)
+![](img/gcp-products-per-region.png)
+![](img/azure-services-per-region.png)
 ![](img/aws-azs-per-region.png)
 ![](img/gcp-azs-per-region.png)
 ![](img/azure-azs-per-region.png)
-![](img/gcp-products-per-region.png)
-![](img/azure-services-per-region.png)
+![](img/resources-per-service.png)
 
 ```shell
 for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
