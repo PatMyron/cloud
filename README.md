@@ -1,4 +1,5 @@
 ![](img/ec2-unit-prices.png)
+![](img/azure-unit-prices.png)
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
 ![](img/resources-per-region-by-region-launch-date.png)
