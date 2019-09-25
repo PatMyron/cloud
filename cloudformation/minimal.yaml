@@ -1,0 +1,252 @@
+Resources:
+  Account:
+    Type: AWS::ApiGateway::Account
+  ApiKey:
+    Type: AWS::ApiGateway::ApiKey
+  ClientCertificate:
+    Type: AWS::ApiGateway::ClientCertificate
+  UsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+  Stack:
+    Type: AWS::AppStream::Stack
+  Application:
+    Type: AWS::CodeDeploy::Application
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/451
+  DeploymentConfig:
+    Type: AWS::CodeDeploy::DeploymentConfig
+    Properties:
+      MinimumHealthyHosts:
+        Type: HOST_COUNT
+        Value: 1
+  UserPool:
+    Type: AWS::Cognito::UserPool
+  ParameterGroup:
+    Type: AWS::DAX::ParameterGroup
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/452
+#  Certificate:
+#    Type: AWS::DMS::Certificate
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/453
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        ImageId: ami-a
+  PlacementGroup:
+    Type: AWS::EC2::PlacementGroup
+  TransitGateway:
+    Type: AWS::EC2::TransitGateway
+  Repository:
+    Type: AWS::ECR::Repository
+  Cluster:
+    Type: AWS::ECS::Cluster
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/454
+#  TaskDefinition:
+#    Type: AWS::ECS::TaskDefinition
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/455
+#  LoadBalancer:
+#    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/467
+#  TargetGroup:
+#    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/468
+  Domain:
+    Type: AWS::Elasticsearch::Domain
+    Properties:
+      ElasticsearchClusterConfig:
+        InstanceType: r3.large.elasticsearch
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/456
+  Rule:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: rate(10 minutes)
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/439
+#   FileSystem:
+#     Type: AWS::FSx::FileSystem
+
+  Build:
+    Type: AWS::GameLift::Build
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/466
+  Classifier:
+    Type: AWS::Glue::Classifier
+    Properties:
+      CsvClassifier:
+        AllowSingleColumn: true
+
+  AssessmentTarget:
+    Type: AWS::Inspector::AssessmentTarget
+  Thing:
+    Type: AWS::IoT::Thing
+  Channel:
+    Type: AWS::IoTAnalytics::Channel
+  Datastore:
+    Type: AWS::IoTAnalytics::Datastore
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/457
+#   DetectorModel:
+#     Type: AWS::IoTEvents::DetectorModel
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/458
+#   Input:
+#     Type: AWS::IoTEvents::Input
+
+  DataLakeSettings:
+    Type: AWS::LakeFormation::DataLakeSettings
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/459
+#   Channel:
+#     Type: AWS::MediaLive::Channel
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/460
+#   Input:
+#     Type: AWS::MediaLive::Input
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/461
+  InputSecurityGroup:
+    Type: AWS::MediaLive::InputSecurityGroup
+    Properties:
+      WhitelistRules:
+        - Cidr: 0.0.0.0/0
+
+  DBCluster:
+    Type: AWS::Neptune::DBCluster
+  Fleet:
+    Type: AWS::RoboMaker::Fleet
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/465
+#   RecordSetGroup:
+#     Type: AWS::Route53::RecordSetGroup
+
+  NotebookInstanceLifecycleConfig:
+    Type: AWS::SageMaker::NotebookInstanceLifecycleConfig
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/462
+#   Workteam:
+#     Type: AWS::SageMaker::Workteam
+
+  Secret:
+    Type: AWS::SecretsManager::Secret
+  Hub:
+    Type: AWS::SecurityHub::Hub
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/463
+#   Service:
+#     Type: AWS::ServiceDiscovery::Service
+
+  ConfigurationSet:
+    Type: AWS::SES::ConfigurationSet
+  ReceiptRuleSet:
+    Type: AWS::SES::ReceiptRuleSet
+
+# https://github.com/awsdocs/aws-cloudformation-user-guide/pull/464
+#   Template:
+#     Type: AWS::SES::Template
+
+##########################################################################################
+
+  ElasticBeanstalkApplication:
+    Type: AWS::ElasticBeanstalk::Application
+  Group:
+    Type: AWS::IAM::Group
+  User:
+    Type: AWS::IAM::User
+  Bucket:
+    Type: AWS::S3::Bucket
+  Domain:
+    Type: AWS::SDB::Domain
+  Topic:
+    Type: AWS::SNS::Topic
+  Queue:
+    Type: AWS::SQS::Queue
+  WaitConditionHandle:
+    Type: AWS::CloudFormation::WaitConditionHandle
+
+# A ResourceSignal CreationPolicy or WaitConditionHandle must be defined    
+#  WaitCondition:
+#    Type: AWS::CloudFormation::WaitCondition
+
+##########################################################################################
+
+  Ledger:
+    Type: AWS::QLDB::Ledger
+    Properties:
+      PermissionsMode: ALLOW_ALL
+  ResourceShare:
+    Type: AWS::RAM::ResourceShare
+    Properties:
+      Name: Name
+  Container:
+    Type: AWS::MediaStore::Container
+    Properties:
+      ContainerName: ContainerName
+  CodeCommitRepository:
+    Type: AWS::CodeCommit::Repository
+    Properties:
+      RepositoryName: RepositoryName
+  EnvironmentEC2:
+    Type: AWS::Cloud9::EnvironmentEC2
+    Properties:
+      InstanceType: t3.small
+# [Exception=InvalidParameterException] Failed to call CreateBudget for [AccountId: ] - Unable to create/update budget - please provide one of the followings: Budget Limit/ Planned Budget Limit (Service: AWSBudgets; Status Code: 400; Error Code: InvalidParameterException; Request ID: )
+  Budget:
+    Type: AWS::Budgets::Budget
+    Properties:
+      Budget:
+        BudgetType: COST
+        TimeUnit: ANNUALLY
+        BudgetLimit:
+          Amount: 1
+          Unit: USD
+  NamedQuery:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Database: Database
+      QueryString: QueryString
+  CodeRepository:
+    Type: AWS::SageMaker::CodeRepository
+    Properties:
+      GitConfig:
+        RepositoryUrl: https://github.com/patmyron/cloud
+  App:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: Name
+  RestApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: Name
+  Mesh:
+    Type: AWS::AppMesh::Mesh
+    Properties:
+      MeshName: MeshName
+  User:
+    Type: AWS::AppStream::User
+    Properties:
+      UserName: UserName@UserName.com
+      AuthenticationType: USERPOOL
+  GraphQLApi:
+    Type: AWS::AppSync::GraphQLApi
+    Properties:
+      Name: Name
+      AuthenticationType: API_KEY
+  BackupVault:
+    Type: AWS::Backup::BackupVault
+    Properties:
+      BackupVaultName: BackupVaultName
+  HttpNamespace:
+    Type: AWS::ServiceDiscovery::HttpNamespace
+    Properties:
+      Name: Name
+  PublicDnsNamespace:
+    Type: AWS::ServiceDiscovery::PublicDnsNamespace
+    Properties:
+      Name: name.com
+  DedicatedIpPool:
+    Type: AWS::PinpointEmail::DedicatedIpPool
+# Property PipelineObjects cannot be empty.
+#  Pipeline:
+#    Type: AWS::DataPipeline::Pipeline
+#    Properties:
+#      Name: Name
