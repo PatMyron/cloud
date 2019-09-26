@@ -243,6 +243,73 @@ Resources:
     Type: AWS::ServiceDiscovery::PublicDnsNamespace
     Properties:
       Name: name.com
+  EventBusPolicy:
+    Type: AWS::Events::EventBusPolicy
+    Properties:
+      Action: events:PutEvents
+      Principal: '*'
+      StatementId: StatementId
+  IdentityPool:
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      AllowUnauthenticatedIdentities: true
+  AggregationAuthorization:
+    Type: AWS::Config::AggregationAuthorization
+    Properties:
+      AuthorizedAccountId: !Ref AWS::AccountId
+      AuthorizedAwsRegion: !Ref AWS::Region
+  ConfigurationAggregator:
+    Type: AWS::Config::ConfigurationAggregator
+    Properties:
+      ConfigurationAggregatorName: ConfigurationAggregatorName
+      AccountAggregationSources:
+        - AccountIds:
+          - !Ref AWS::AccountId
+          AllAwsRegions: true
+  DocDBDBCluster:
+    Type: AWS::DocDB::DBCluster
+    Properties:
+      MasterUsername: MasterUsername
+      MasterUserPassword: MasterUserPassword
+  CustomerGateway:
+    Type: AWS::EC2::CustomerGateway
+    Properties:
+      IpAddress: 1.2.3.4
+      Type: ipsec.1
+      BgpAsn: 65000
+  DHCPOptions:
+    Type: AWS::EC2::DHCPOptions
+    Properties:
+      DomainNameServers:
+        - AmazonProvidedDNS
+  EIP:
+    Type: AWS::EC2::EIP
+  Host:
+    Type: AWS::EC2::Host
+    Properties: 
+      AvailabilityZone: !Select 
+        - 0
+        - !GetAZs ''
+      InstanceType: c5.large
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: GroupDescription
+  Volume:
+    Type: AWS::EC2::Volume
+    Properties:
+      Size: 4
+      AvailabilityZone: !Select 
+        - 0
+        - !GetAZs ''
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: '10.0.0.0/16'
+  VPNGateway:
+    Type: AWS::EC2::VPNGateway
+    Properties:
+      Type: ipsec.1
   DedicatedIpPool:
     Type: AWS::PinpointEmail::DedicatedIpPool
 # Property PipelineObjects cannot be empty.
