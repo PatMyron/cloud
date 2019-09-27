@@ -154,7 +154,7 @@ Resources:
     Type: AWS::IAM::User
   Bucket:
     Type: AWS::S3::Bucket
-  Domain:
+  SDBDomain:
     Type: AWS::SDB::Domain
   Topic:
     Type: AWS::SNS::Topic
@@ -221,7 +221,7 @@ Resources:
     Type: AWS::AppMesh::Mesh
     Properties:
       MeshName: MeshName
-  User:
+  AppStreamUser:
     Type: AWS::AppStream::User
     Properties:
       UserName: UserName@UserName.com
@@ -310,6 +310,17 @@ Resources:
     Type: AWS::EC2::VPNGateway
     Properties:
       Type: ipsec.1
+  FileSystem:
+    Type: AWS::EFS::FileSystem
+  ElastiCacheParameterGroup:
+    Type: AWS::ElastiCache::ParameterGroup
+    Properties:
+      Description: Description
+      CacheParameterGroupFamily: redis5.0
+  ElastiCacheSecurityGroup:
+    Type: AWS::ElastiCache::SecurityGroup
+    Properties:
+      Description: Description
   DedicatedIpPool:
     Type: AWS::PinpointEmail::DedicatedIpPool
 # Property PipelineObjects cannot be empty.
