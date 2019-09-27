@@ -321,6 +321,32 @@ Resources:
     Type: AWS::ElastiCache::SecurityGroup
     Properties:
       Description: Description
+  Alias: 
+    Type: AWS::GameLift::Alias
+    Properties: 
+      Name: Name
+      RoutingStrategy: 
+        Type: TERMINAL
+        Message: Message
+  Workflow: 
+    Type: AWS::Glue::Workflow
+    Properties:
+      Name: Name
+  ManagedPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: '*'
+            Resource: '*'
+  ResourceGroup:
+    Type: AWS::Inspector::ResourceGroup
+    Properties: 
+      ResourceGroupTags: 
+        - Key: Key
+          Value: Value
   DedicatedIpPool:
     Type: AWS::PinpointEmail::DedicatedIpPool
 # Property PipelineObjects cannot be empty.
