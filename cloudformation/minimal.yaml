@@ -163,7 +163,7 @@ Resources:
   WaitConditionHandle:
     Type: AWS::CloudFormation::WaitConditionHandle
 
-# A ResourceSignal CreationPolicy or WaitConditionHandle must be defined    
+# A ResourceSignal CreationPolicy or WaitConditionHandle must be defined
 #  WaitCondition:
 #    Type: AWS::CloudFormation::WaitCondition
 
@@ -286,25 +286,25 @@ Resources:
     Type: AWS::EC2::EIP
   Host:
     Type: AWS::EC2::Host
-    Properties: 
-      AvailabilityZone: !Select 
+    Properties:
+      AvailabilityZone: !Select
         - 0
         - !GetAZs ''
       InstanceType: c5.large
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
-    Properties: 
+    Properties:
       GroupDescription: GroupDescription
   Volume:
     Type: AWS::EC2::Volume
     Properties:
       Size: 4
-      AvailabilityZone: !Select 
+      AvailabilityZone: !Select
         - 0
         - !GetAZs ''
   VPC:
     Type: AWS::EC2::VPC
-    Properties: 
+    Properties:
       CidrBlock: 10.0.0.0/16
   VPNGateway:
     Type: AWS::EC2::VPNGateway
@@ -321,14 +321,14 @@ Resources:
     Type: AWS::ElastiCache::SecurityGroup
     Properties:
       Description: Description
-  Alias: 
+  Alias:
     Type: AWS::GameLift::Alias
-    Properties: 
+    Properties:
       Name: Name
-      RoutingStrategy: 
+      RoutingStrategy:
         Type: TERMINAL
         Message: Message
-  Workflow: 
+  Workflow:
     Type: AWS::Glue::Workflow
     Properties:
       Name: Name
@@ -343,8 +343,8 @@ Resources:
             Resource: '*'
   ResourceGroup:
     Type: AWS::Inspector::ResourceGroup
-    Properties: 
-      ResourceGroupTags: 
+    Properties:
+      ResourceGroupTags:
         - Key: Key
           Value: Value
   DedicatedIpPool:

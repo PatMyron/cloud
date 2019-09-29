@@ -25,16 +25,16 @@ eu-north-1
 ap-east-1
 me-south-1
 us-gov-east-1
- 
+
 r3-4:
 sa-east-1
- 
+
 r4-5:
 eu-west-3
 eu-west-2
 ca-central-1
 cn-northwest-1
- 
+
 r3-5:
 ap-south-1
 eu-west-1
@@ -50,15 +50,15 @@ us-west-1
 us-west-2
 us-gov-west-1
 cn-north-1
- 
+
 ----------------
- 
+
 cm5:
 eu-north-1
 ap-east-1
 me-south-1
 us-gov-east-1
- 
+
 cm4-5:
 ap-south-1
 eu-west-3
@@ -66,15 +66,15 @@ eu-west-2
 us-east-2
 ca-central-1
 cn-northwest-1
- 
+
 cm3-5:
 eu-central-1
 ap-northeast-3
 ap-northeast-2
- 
+
 c3-5m1-5:
 cn-north-1
- 
+
 cm1-5:
 eu-west-1
 ap-northeast-1
@@ -85,15 +85,15 @@ us-east-1
 us-west-1
 us-west-2
 us-gov-west-1
- 
+
 -------------
- 
+
 t3:
 eu-north-1
 ap-east-1
 me-south-1
 us-gov-east-1
- 
+
 t2-t3:
 ap-south-1
 eu-west-3
@@ -105,7 +105,7 @@ eu-central-1
 us-east-2
 cn-north-1
 cn-northwest-1
- 
+
 t1-t3:
 eu-west-1
 ap-northeast-1
@@ -180,7 +180,7 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l
       91 # services
-      
+
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | wc -l
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '"(.*?)::[^.]*"' | sort | uniq -c | sort -nr
      423 # resource types
