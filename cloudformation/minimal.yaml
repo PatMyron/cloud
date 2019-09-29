@@ -305,7 +305,7 @@ Resources:
   VPC:
     Type: AWS::EC2::VPC
     Properties: 
-      CidrBlock: '10.0.0.0/16'
+      CidrBlock: 10.0.0.0/16
   VPNGateway:
     Type: AWS::EC2::VPNGateway
     Properties:
