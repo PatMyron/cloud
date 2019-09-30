@@ -347,8 +347,75 @@ Resources:
       ResourceGroupTags:
         - Key: Key
           Value: Value
+  Policy:
+    Type: AWS::IoT::Policy
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: '*'
+            Resource: '*'
+  ConnectorDefinition:
+    Type: AWS::Greengrass::ConnectorDefinition
+    Properties:
+      Name: Name
+  CoreDefinition:
+    Type: AWS::Greengrass::CoreDefinition
+    Properties:
+      Name: Name
+  DeviceDefinition:
+    Type: AWS::Greengrass::DeviceDefinition
+    Properties:
+      Name: Name
+  FunctionDefinition:
+    Type: AWS::Greengrass::FunctionDefinition
+    Properties:
+      Name: Name
+  GreengrassGroup:
+    Type: AWS::Greengrass::Group
+    Properties:
+      Name: Name
+  LoggerDefinition:
+    Type: AWS::Greengrass::LoggerDefinition
+    Properties:
+      Name: Name
+  ResourceDefinition:
+    Type: AWS::Greengrass::ResourceDefinition
+    Properties:
+      Name: Name
+  SubscriptionDefinition:
+    Type: AWS::Greengrass::SubscriptionDefinition
+    Properties:
+      Name: Name
+  Stream:
+    Type: AWS::Kinesis::Stream
+    Properties:
+      ShardCount: 1
+  Key:
+    Type: AWS::KMS::Key
+    Properties:
+      KeyPolicy:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: '*'
+            Resource: '*'
+            Principal: '*'
+  PinpointApp:
+    Type: AWS::Pinpoint::App
+    Properties:
+      Name: Name
+  PinpointEmailConfigurationSet:
+    Type: AWS::PinpointEmail::ConfigurationSet
+    Properties:
+      Name: Name
   DedicatedIpPool:
     Type: AWS::PinpointEmail::DedicatedIpPool
+  Identity:
+    Type: AWS::PinpointEmail::Identity
+    Properties:
+      Name: Name
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
