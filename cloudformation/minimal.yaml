@@ -416,6 +416,30 @@ Resources:
     Type: AWS::PinpointEmail::Identity
     Properties:
       Name: Name
+  ByteMatchSet:
+    Type: AWS::WAFRegional::ByteMatchSet
+    Properties:
+      Name: Name
+  GeoMatchSet:
+    Type: AWS::WAFRegional::GeoMatchSet
+    Properties:
+      Name: Name
+  IPSet:
+    Type: AWS::WAFRegional::IPSet
+    Properties:
+      Name: Name
+  SizeConstraintSet:
+    Type: AWS::WAFRegional::SizeConstraintSet
+    Properties:
+      Name: Name
+  SqlInjectionMatchSet:
+    Type: AWS::WAFRegional::SqlInjectionMatchSet
+    Properties:
+      Name: Name
+  XssMatchSet:
+    Type: AWS::WAFRegional::XssMatchSet
+    Properties:
+      Name: Name
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
