@@ -440,6 +440,26 @@ Resources:
     Type: AWS::WAFRegional::XssMatchSet
     Properties:
       Name: Name
+  WAFByteMatchSet:
+    Type: AWS::WAF::ByteMatchSet
+    Properties:
+      Name: Name
+  WAFIPSet:
+    Type: AWS::WAF::IPSet
+    Properties:
+      Name: Name
+  WAFSizeConstraintSet:
+    Type: AWS::WAF::SizeConstraintSet
+    Properties:
+      Name: Name
+  WAFSqlInjectionMatchSet:
+    Type: AWS::WAF::SqlInjectionMatchSet
+    Properties:
+      Name: Name
+  WAFXssMatchSet:
+    Type: AWS::WAF::XssMatchSet
+    Properties:
+      Name: Name
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
