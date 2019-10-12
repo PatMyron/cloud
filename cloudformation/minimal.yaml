@@ -460,6 +460,27 @@ Resources:
     Type: AWS::WAF::XssMatchSet
     Properties:
       Name: Name
+  Server:
+    Type: AWS::Transfer::Server
+  Parameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Type: String
+      Value: Value
+  Activity:
+    Type: AWS::StepFunctions::Activity
+    Properties:
+      Name: Name
+  Portfolio:
+    Type: AWS::ServiceCatalog::Portfolio
+    Properties:
+      DisplayName: DisplayName
+      ProviderName: ProviderName
+  TagOption:
+    Type: AWS::ServiceCatalog::TagOption
+    Properties:
+      Key: Key
+      Value: Value
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
