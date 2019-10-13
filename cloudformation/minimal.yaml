@@ -481,6 +481,35 @@ Resources:
     Properties:
       Key: Key
       Value: Value
+  HealthCheck:
+    Type: AWS::Route53::HealthCheck
+    Properties:
+      HealthCheckConfig:
+        Type: HTTP
+        IPAddress: 1.2.3.4
+  HostedZone:
+    Type: AWS::Route53::HostedZone
+    Properties:
+      Name: name.com
+  RedshiftCluster:
+    Type: AWS::Redshift::Cluster
+    Properties:
+      ClusterType: single-node
+      DBName: dbname
+      MasterUsername: masterusername
+      MasterUserPassword: MasterUserPassword1
+      NodeType: dc2.large
+  ClusterParameterGroup:
+    Type: AWS::Redshift::ClusterParameterGroup
+    Properties:
+      Description: Description
+      ParameterGroupFamily: redshift-1.0
+  RDSDBCluster:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      Engine: aurora
+      MasterUsername: MasterUsername
+      MasterUserPassword: MasterUserPassword
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
