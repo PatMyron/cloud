@@ -506,6 +506,7 @@ Resources:
       ParameterGroupFamily: redshift-1.0
   RDSDBCluster:
     Type: AWS::RDS::DBCluster
+    DeletionPolicy: Delete
     Properties:
       Engine: aurora
       MasterUsername: MasterUsername
