@@ -511,6 +511,15 @@ Resources:
       Engine: aurora
       MasterUsername: MasterUsername
       MasterUserPassword: MasterUserPassword
+  DBInstance:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Delete
+    Properties:
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: 10
+      Engine: mysql
+      MasterUsername: MasterUsername
+      MasterUserPassword: MasterUserPassword
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
