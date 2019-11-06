@@ -520,6 +520,16 @@ Resources:
       Engine: mysql
       MasterUsername: MasterUsername
       MasterUserPassword: MasterUserPassword
+  Table:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions: 
+        - AttributeName: AttributeName
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: AttributeName
+          KeyType: HASH
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
