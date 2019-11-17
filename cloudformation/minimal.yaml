@@ -530,6 +530,60 @@ Resources:
       KeySchema: 
         - AttributeName: AttributeName
           KeyType: HASH
+  Broker:
+    Type: AWS::AmazonMQ::Broker
+    Properties:
+      EngineVersion: 5.15.9
+      HostInstanceType: mq.m5.large
+      BrokerName: BrokerName
+      DeploymentMode: SINGLE_INSTANCE
+      EngineType: ACTIVEMQ
+      AutoMinorVersionUpgrade: false
+      PubliclyAccessible: false
+      Users:
+        - Username: Username
+          Password: PasswordPassword
+  Configuration:
+    Type: AWS::AmazonMQ::Configuration
+    Properties:
+      EngineVersion: 5.15.9
+      EngineType: ACTIVEMQ
+      Name: Name
+      Data:
+        ? "Fn::Base64"
+        : |
+            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <broker xmlns="http://activemq.apache.org/schema/core" start="false">
+            </broker>
+  Api:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: Name
+      ProtocolType: WEBSOCKET
+      RouteSelectionExpression: $request.body.action
+  DirectoryConfig:
+    Type: AWS::AppStream::DirectoryConfig
+    Properties:
+      OrganizationalUnitDistinguishedNames:
+        - OrganizationalUnitDistinguishedNames
+      DirectoryName: DirectoryName.com
+      ServiceAccountCredentials:
+        AccountName: DirectoryName.com\AccountName
+        AccountPassword: AccountPassword
+  AppStreamFleet:
+    Type: AWS::AppStream::Fleet
+    Properties:
+      InstanceType: stream.standard.medium
+      ImageName: Amazon-AppStream2-Sample-Image-02-04-2019
+      Name: Name
+      ComputeCapacity:
+        DesiredInstances: 1
+  ImageBuilder:
+    Type: AWS::AppStream::ImageBuilder
+    Properties:
+      InstanceType: stream.standard.medium
+      ImageName: Amazon-AppStream2-Sample-Image-02-04-2019
+      Name: Name
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
