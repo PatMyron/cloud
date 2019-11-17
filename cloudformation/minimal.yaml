@@ -584,6 +584,19 @@ Resources:
       InstanceType: stream.standard.medium
       ImageName: Amazon-AppStream2-Sample-Image-02-04-2019
       Name: Name
+  JobDefinition:
+    Type: AWS::Batch::JobDefinition
+    Properties:
+      Type: container
+      ContainerProperties:
+        Memory: 4
+        Vcpus: 1
+        Image: nvidia/cuda
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: Comment
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
