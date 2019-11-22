@@ -43,8 +43,13 @@ Resources:
     Type: AWS::ECS::Cluster
 
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/454
-#  TaskDefinition:
-#    Type: AWS::ECS::TaskDefinition
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      ContainerDefinitions:
+        - Image: Image
+          Name: Name
+          Memory: 100
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/455
 #  LoadBalancer:
 #    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
