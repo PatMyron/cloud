@@ -602,6 +602,16 @@ Resources:
     Properties:
       CloudFrontOriginAccessIdentityConfig:
         Comment: Comment
+  Alarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      ComparisonOperator: LessThanThreshold
+      MetricName: MetricName
+      Namespace: Namespace
+      Statistic: Sum
+      EvaluationPeriods: 1
+      Threshold: 1
+      Period: 10
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
