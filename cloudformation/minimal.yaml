@@ -612,6 +612,17 @@ Resources:
       EvaluationPeriods: 1
       Threshold: 1
       Period: 10
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
