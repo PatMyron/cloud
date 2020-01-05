@@ -623,6 +623,51 @@ Resources:
                 - ec2.amazonaws.com
             Action:
               - sts:AssumeRole
+  ReportGroup:
+    Type: AWS::CodeBuild::ReportGroup
+    Properties:
+      ExportConfig:
+        ExportConfigType: NO_EXPORT
+      Type: TEST
+  Analyzer:
+    Type: AWS::AccessAnalyzer::Analyzer
+    Properties:
+      Type: ACCOUNT
+  Registry:
+    Type: AWS::EventSchemas::Registry
+  WAFv2IPSet:
+    Type: AWS::WAFv2::IPSet
+    Properties:
+      Name: Name
+      Scope: REGIONAL
+      Addresses: []
+      IPAddressVersion: IPV4
+  RegexPatternSet:
+    Type: AWS::WAFv2::RegexPatternSet
+    Properties:
+      Name: Name
+      Scope: REGIONAL
+      RegularExpressionList:
+        - RegularExpression
+  RuleGroup:
+    Type: AWS::WAFv2::RuleGroup
+    Properties:
+      Name: Name
+      Scope: REGIONAL
+      Capacity: 1
+      VisibilityConfig:
+        CloudWatchMetricsEnabled: false
+        MetricName: MetricName
+  WebACL:
+    Type: AWS::WAFv2::WebACL
+    Properties:
+      Name: Name
+      Scope: REGIONAL
+      DefaultAction:
+        Allow: {}
+      VisibilityConfig:
+        CloudWatchMetricsEnabled: false
+        MetricName: MetricName
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
