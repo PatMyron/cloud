@@ -668,6 +668,23 @@ Resources:
       VisibilityConfig:
         CloudWatchMetricsEnabled: false
         MetricName: MetricName
+  GameSessionQueue:
+    Type: AWS::GameLift::GameSessionQueue
+    Properties:
+      Name: Name
+  MediaConvertQueue:
+    Type: AWS::MediaConvert::Queue
+  EmailTemplate:
+    Type: AWS::Pinpoint::EmailTemplate
+    Properties:
+      Subject: Subject
+      TemplateName: TemplateName
+      TextPart: TextPart
+  SmsTemplate:
+    Type: AWS::Pinpoint::SmsTemplate
+    Properties:
+      Body: Body
+      TemplateName: TemplateName
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
