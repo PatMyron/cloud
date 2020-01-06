@@ -146,8 +146,12 @@ Resources:
     Type: AWS::SES::ReceiptRuleSet
 
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/464
-#   Template:
-#     Type: AWS::SES::Template
+  Template:
+    Type: AWS::SES::Template
+    Properties:
+      Template:
+        SubjectPart: SubjectPart
+        TextPart: TextPart
 
 ##########################################################################################
 
