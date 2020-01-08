@@ -110,8 +110,13 @@ Resources:
 #   Channel:
 #     Type: AWS::MediaLive::Channel
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/460
-#   Input:
-#     Type: AWS::MediaLive::Input
+  MediaLiveInput:
+    Type: AWS::MediaLive::Input
+    Properties:
+      Name: Name
+      Type: URL_PULL
+      Sources:
+        - Url: http://url.com
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/461
   InputSecurityGroup:
     Type: AWS::MediaLive::InputSecurityGroup
