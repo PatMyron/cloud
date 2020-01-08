@@ -94,8 +94,12 @@ Resources:
 #   DetectorModel:
 #     Type: AWS::IoTEvents::DetectorModel
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/458
-#   Input:
-#     Type: AWS::IoTEvents::Input
+  Input:
+    Type: AWS::IoTEvents::Input
+    Properties:
+      InputDefinition:
+        Attributes:
+          - JsonPath: JsonPath
 
   DataLakeSettings:
     Type: AWS::LakeFormation::DataLakeSettings
