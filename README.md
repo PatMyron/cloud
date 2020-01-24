@@ -26,9 +26,6 @@ ap-east-1
 me-south-1
 us-gov-east-1
 
-r3-4:
-sa-east-1
-
 r4-5:
 eu-west-3
 eu-west-2
@@ -44,6 +41,7 @@ ap-northeast-1
 ap-southeast-1
 ap-southeast-2
 eu-central-1
+sa-east-1
 us-east-1
 us-east-2
 us-west-1
