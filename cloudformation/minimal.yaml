@@ -698,6 +698,25 @@ Resources:
     Properties:
       Body: Body
       TemplateName: TemplateName
+  AppConfigApplication:
+    Type: AWS::AppConfig::Application
+    Properties:
+      Name: Name
+  DeploymentStrategy:
+    Type: AWS::AppConfig::DeploymentStrategy
+    Properties:
+      DeploymentDurationInMinutes: 0
+      GrowthFactor: 100
+      ReplicateTo: NONE
+      Name: Name
+  CertificateAuthority:
+    Type: AWS::ACMPCA::CertificateAuthority
+    Properties:
+      Type: ROOT
+      KeyAlgorithm: RSA_4096
+      SigningAlgorithm: SHA512WITHRSA
+      Subject:
+        CommonName: CommonName
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
