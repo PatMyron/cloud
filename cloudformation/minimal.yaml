@@ -717,6 +717,13 @@ Resources:
       SigningAlgorithm: SHA512WITHRSA
       Subject:
         CommonName: CommonName
+  Trigger:
+    Type: AWS::Glue::Trigger
+    Properties:
+      Type: SCHEDULED
+      Schedule: cron(0 * ? * * *)
+      Actions:
+        - JobName: JobName
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
