@@ -724,6 +724,11 @@ Resources:
       Schedule: cron(0 * ? * * *)
       Actions:
         - JobName: JobName
+  CompositeAlarm:
+    Type: AWS::CloudWatch::CompositeAlarm
+    Properties:
+      AlarmName: AlarmName
+      AlarmRule: "FALSE"
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
