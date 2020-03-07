@@ -729,6 +729,15 @@ Resources:
     Properties:
       AlarmName: AlarmName
       AlarmRule: "FALSE"
+  WorkGroup:
+    Type: AWS::Athena::WorkGroup
+    Properties: 
+      Name: Name
+  Connection:
+    Type: AWS::CodeStarConnections::Connection
+    Properties:
+      ConnectionName: ConnectionName
+      ProviderType: Bitbucket
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
