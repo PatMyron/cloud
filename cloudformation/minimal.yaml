@@ -738,6 +738,8 @@ Resources:
     Properties:
       ConnectionName: ConnectionName
       ProviderType: Bitbucket
+  Keyspace:
+    Type: AWS::Cassandra::Keyspace
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
