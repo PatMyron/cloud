@@ -766,6 +766,23 @@ Resources:
                 inputs:
                   commands:
                     - echo 'hi'
+  CostCategory:
+    Type: AWS::CE::CostCategory
+    Properties:
+      Name: Name
+      RuleVersion: CostCategoryExpression.v1
+      Rules: '
+        [
+          {
+            "Value": "Value",
+            "Rule": {
+              "Dimensions": {
+                "Key": "LINKED_ACCOUNT",
+                "Values": [ "111111111111" ]
+              }
+            }
+          }
+        ]'
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
