@@ -750,6 +750,22 @@ Resources:
       Name: Name
   GlobalNetwork:
     Type: AWS::NetworkManager::GlobalNetwork
+  Component:
+    Type: AWS::ImageBuilder::Component
+    Properties:
+      Name: Name
+      Platform: Linux
+      Version: 1.0.0
+      Data: |
+        schemaVersion: 1.0
+        phases:
+          - name: build
+            steps:
+              - name: name
+                action: ExecuteBash
+                inputs:
+                  commands:
+                    - echo 'hi'
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
