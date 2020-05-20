@@ -783,6 +783,39 @@ Resources:
             }
           }
         ]'
+  ConfigurationAssociation:
+    Type: AWS::AmazonMQ::ConfigurationAssociation
+    Properties:
+      Broker: !Ref Broker
+      Configuration:
+        Id: !Ref Configuration
+        Revision: 1
+  Branch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt App.AppId
+      BranchName: BranchName
+  AmplifyDomain:
+    Type: AWS::Amplify::Domain
+    Properties:
+      AppId: !GetAtt App.AppId
+      DomainName: DomainName.com
+      SubDomainSettings:
+        - Prefix: prefix
+          BranchName: !GetAtt Branch.BranchName
+  NeptuneDBInstance:
+    Type: AWS::Neptune::DBInstance
+    Properties:
+      DBInstanceClass: db.r5.xlarge
+      DBClusterIdentifier: !Ref DBCluster
+  OptionGroup:
+    Type: AWS::RDS::OptionGroup
+    Properties:
+      EngineName: oracle-ee
+      MajorEngineVersion: 12.1
+      OptionGroupDescription: OptionGroupDescription
+      OptionConfigurations:
+        - OptionName: APEX
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
