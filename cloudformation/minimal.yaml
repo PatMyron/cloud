@@ -854,6 +854,10 @@ Resources:
     Properties:
       Vpc: !Ref VPC
       Name: Name
+  LogStream:
+    Type: AWS::Logs::LogStream
+    Properties:
+      LogGroupName: !Ref LogGroup
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
