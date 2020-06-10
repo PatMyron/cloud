@@ -186,97 +186,7 @@ $ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFo
     1279 # property types
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | sort | uniq -c | sort -nr
-  53 EC2 # resource types per service
-  19 ApiGateway
-  16 Greengrass
-  15 Pinpoint
-  13 ServiceCatalog
-  11 WAFRegional
-  11 Glue
-  11 ApiGatewayV2
-   9 RDS
-   9 IAM
-   7 WAF
-   7 SSM
-   7 OpsWorks
-   7 Lambda
-   7 Cognito
-   7 AppStream
-   6 SES
-   6 RoboMaker
-   6 IoT
-   6 GuardDuty
-   6 ElastiCache
-   6 DMS
-   6 AppSync
-   5 ServiceDiscovery
-   5 SageMaker
-   5 Redshift
-   5 Neptune
-   5 Logs
-   5 ElasticLoadBalancingV2
-   5 EMR
-   5 Config
-   5 CloudFormation
-   5 AutoScaling
-   5 AppMesh
-   4 SecretsManager
-   4 Route53
-   4 PinpointEmail
-   4 KinesisAnalyticsV2
-   4 IoTAnalytics
-   4 ElasticBeanstalk
-   4 DocDB
-   3 SNS
-   3 Route53Resolver
-   3 KinesisAnalytics
-   3 IoT1Click
-   3 Inspector
-   3 GameLift
-   3 ECS
-   3 DAX
-   3 CodePipeline
-   3 CodeDeploy
-   3 CloudFront
-   3 Batch
-   3 Amplify
-   3 AmazonMQ
-   2 Transfer
-   2 StepFunctions
-   2 SQS
-   2 S3
-   2 Kinesis
-   2 KMS
-   2 Events
-   2 EFS
-   2 DirectoryService
-   2 CloudWatch
-   2 ApplicationAutoScaling
-   1 WorkSpaces
-   1 SDB
-   1 RAM
-   1 OpsWorksCM
-   1 MediaStore
-   1 MSK
-   1 KinesisFirehose
-   1 IoTThingsGraph
-   1 FSx
-   1 Elasticsearch
-   1 ElasticLoadBalancing
-   1 EKS
-   1 ECR
-   1 DynamoDB
-   1 DataPipeline
-   1 DLM
-   1 CodeCommit
-   1 CodeBuild
-   1 CloudTrail
-   1 Cloud9
-   1 CertificateManager
-   1 Budgets
-   1 AutoScalingPlans
-   1 Athena
-   1 ASK
+# resource types per service
 
 $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::" | sort | uniq -c | wc -l | xargs echo -n; echo " $0"' | sort -nr
 for REGION in ap-east-1 me-south-1 us-gov-west-1 us-gov-east-1
@@ -287,29 +197,7 @@ for REGION in cn-north-1 cn-northwest-1
 do
   curl -s -N https://s3.$REGION.amazonaws.com.cn/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l | xargs echo -n; echo " $REGION"
 done
-94 us-west-2 # services per region
-94 us-east-1
-94 eu-west-1
-87 ap-northeast-1
-85 eu-central-1
-85 ap-southeast-2
-84 us-east-2
-77 ap-southeast-1
-76 ap-northeast-2
-74 eu-west-2
-70 ap-south-1
-68 us-west-1
-64 ca-central-1
-59 eu-west-3
-56 sa-east-1
-51 eu-north-1
-48 us-gov-west-1
-46 cn-north-1
-46 cn-northwest-1
-45 ap-east-1
-45 us-gov-east-1
-44 me-south-1
-43 ap-northeast-3
+# CloudFormation services per region
 
 $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l | xargs echo -n; echo " $0"' | sort -nr
 for REGION in ap-east-1 me-south-1 us-gov-west-1 us-gov-east-1
@@ -320,29 +208,7 @@ for REGION in cn-north-1 cn-northwest-1
 do
   curl -s -N https://s3.$REGION.amazonaws.com.cn/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | wc -l | xargs echo -n; echo " $REGION"
 done
-432 us-east-1 # resource types per region
-432 eu-west-1
-431 us-west-2
-397 ap-northeast-1
-393 eu-central-1
-388 ap-southeast-2
-362 us-east-2
-337 ap-northeast-2
-335 ap-southeast-1
-328 ap-south-1
-327 eu-west-2
-301 us-west-1
-291 ca-central-1
-266 eu-west-3
-263 sa-east-1
-228 eu-north-1
-222 us-gov-west-1
-211 cn-north-1
-210 us-gov-east-1
-206 cn-northwest-1
-203 ap-east-1
-189 me-south-1
-189 ap-northeast-3
+# resource types per region
 
 $ diff -u <(curl -s https://s3.eu-west-1.amazonaws.com/cfn-resource-specifications-eu-west-1-prod/latest/CloudFormationResourceSpecification.json | jq '.ResourceTypes | keys' | jq -S) <(curl -s https://s3.us-west-2.amazonaws.com/cfn-resource-specifications-us-west-2-prod/latest/CloudFormationResourceSpecification.json | jq '.ResourceTypes | keys' | jq -S)
 # resource type difference between two regions
@@ -393,52 +259,7 @@ for row in soup.find_all('tr', class_='service-row', attrs={'data-product-slug' 
 
 ```shell
 $ python azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
- 119 europe-west # Azure services per region
- 116 europe-north
- 114 us-east
- 113 us-east-2
- 113 australia-east
- 112 asia-pacific-southeast
- 111 us-south-central
- 108 us-west-2
- 108 japan-east
- 107 us-west
- 105 united-kingdom-south
- 104 us-central
- 101 canada-central
- 101 brazil-south
- 101 asia-pacific-east
- 100 central-india
-  98 us-north-central
-  97 korea-central
-  96 usgov-virginia
-  93 uae-north
-  92 us-west-central
-  92 france-central
-  89 australia-southeast
-  87 south-africa-north
-  87 japan-west
-  86 canada-east
-  85 united-kingdom-west
-  84 china-east-2
-  83 south-india
-  74 west-india
-  72 usgov-texas
-  69 korea-south
-  68 usgov-arizona
-  66 china-north
-  63 china-east
-  61 china-north-2
-  58 us-dod-central
-  58 australia-central
-  55 us-dod-east
-  54 germany-central
-  54 australia-central-2
-  53 south-africa-west
-  52 france-south
-  50 uae-central
-  49 germany-northeast
-  44 usgov-iowa
+# Azure services per region
 ```
 
 ```shell
