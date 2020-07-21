@@ -858,6 +858,17 @@ Resources:
     Type: AWS::Logs::LogStream
     Properties:
       LogGroupName: !Ref LogGroup
+  Subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.0.0/16
+  VpcLink:
+    Type: AWS::ApiGatewayV2::VpcLink
+    Properties:
+      Name: Name
+      SubnetIds:
+        - !Ref Subnet
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
