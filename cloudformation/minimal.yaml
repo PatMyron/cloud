@@ -671,6 +671,7 @@ Resources:
       VisibilityConfig:
         CloudWatchMetricsEnabled: false
         MetricName: MetricName
+        SampledRequestsEnabled: false
   WebACL:
     Type: AWS::WAFv2::WebACL
     Properties:
