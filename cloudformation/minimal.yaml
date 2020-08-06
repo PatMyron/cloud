@@ -51,8 +51,13 @@ Resources:
           Name: Name
           Memory: 100
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/455
-#  LoadBalancer:
-#    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+  LoadBalancer:
+    DependsOn: VPCGatewayAttachment
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Type: network
+      Subnets:
+        - !Ref Subnet
 # https://github.com/awsdocs/aws-cloudformation-user-guide/pull/467
 #  TargetGroup:
 #    Type: AWS::ElasticLoadBalancingV2::TargetGroup
@@ -870,6 +875,16 @@ Resources:
       Name: Name
       SubnetIds:
         - !Ref Subnet
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+  VPCEndpointService:
+    Type: AWS::EC2::VPCEndpointService
+    Properties:
+      NetworkLoadBalancerArns:
+        - !Ref LoadBalancer
 # Property PipelineObjects cannot be empty.
 #  Pipeline:
 #    Type: AWS::DataPipeline::Pipeline
