@@ -687,6 +687,7 @@ Resources:
       VisibilityConfig:
         CloudWatchMetricsEnabled: false
         MetricName: MetricName
+        SampledRequestsEnabled: false
   GameSessionQueue:
     Type: AWS::GameLift::GameSessionQueue
     Properties:
