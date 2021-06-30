@@ -195,7 +195,7 @@ $ diff -u <(curl -s https://s3.eu-west-1.amazonaws.com/cfn-resource-specificatio
 # resource type difference between two regions
 
 $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::" | sort | uniq -c | wc -l | xargs echo -n; echo " $0"' | sort -nr
-for REGION in ap-east-1 me-south-1 us-gov-west-1 us-gov-east-1
+for REGION in ap-east-1 me-south-1 af-south-1 eu-south-1 us-gov-west-1 us-gov-east-1
 do
   curl -s -N https://s3.$REGION.amazonaws.com/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l | xargs echo -n; echo " $REGION"
 done
@@ -206,7 +206,7 @@ done
 # CloudFormation services per region
 
 $ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l | xargs echo -n; echo " $0"' | sort -nr
-for REGION in ap-east-1 me-south-1 us-gov-west-1 us-gov-east-1
+for REGION in ap-east-1 me-south-1 af-south-1 eu-south-1 us-gov-west-1 us-gov-east-1
 do
   curl -s -N https://s3.$REGION.amazonaws.com/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | wc -l | xargs echo -n; echo " $REGION"
 done
