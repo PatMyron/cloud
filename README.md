@@ -249,6 +249,11 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
   13 Attributes
 ```
 
+```shell
+terraform providers schema -json | jq '.provider_schemas ."registry.terraform.io/hashicorp/aws" .resource_schemas | length'
+# resource types
+```
+
 ```python
 from bs4 import BeautifulSoup
 
