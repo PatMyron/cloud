@@ -19,6 +19,7 @@
 
 <details>
 <summary>Azure services per region</summary>
+
 ```python
 from bs4 import BeautifulSoup
 
