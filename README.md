@@ -269,26 +269,3 @@ for row in soup.find_all('tr', class_='service-row', attrs={'data-product-slug' 
 $ python azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
 # Azure services per region
 ```
-
-```shell
-25 asia-northeast1 # Google Cloud products per region
-23 us-east4
-23 us-east1
-22 us-central1
-22 europe-west1
-22 asia-east2
-21 europe-west2
-21 australia-southeast1
-21 asia-south1
-20 us-west2
-20 southamerica-east1
-20 northamerica-northeast1
-19 asia-southeast1
-19 asia-northeast2
-18 asia-east1
-17 europe-west6
-17 europe-west3
-16 us-west1
-16 europe-west4
-16 europe-north1
-```
