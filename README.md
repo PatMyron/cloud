@@ -17,6 +17,25 @@
 ![](img/gcp-products-per-region.png)
 ![](img/azure-services-per-region.png)
 
+<details>
+<summary>Azure services per region</summary>
+```python
+from bs4 import BeautifulSoup
+
+# save webpage locally to ensure table has fully loaded
+soup = BeautifulSoup(open('https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all&regions=all'), 'html.parser')
+for row in soup.find_all('tr', class_='service-row', attrs={'data-product-slug' : True}):
+    for cell in row.find_all(attrs={'data-region-slug' : True}):
+        if 'Not available' not in cell.text:
+            print(cell['data-region-slug'])
+```
+
+```shell
+$ python azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
+# Azure services per region
+```
+</details>
+
 # availability zones per region
 ![](img/aws-azs-per-region.png)
 ![](img/gcp-azs-per-region.png)
@@ -267,20 +286,4 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
 ```shell
 terraform providers schema -json | jq '.provider_schemas ."registry.terraform.io/hashicorp/aws" .resource_schemas | length'
 # resource types
-```
-
-```python
-from bs4 import BeautifulSoup
-
-# save webpage locally to ensure table has fully loaded
-soup = BeautifulSoup(open('https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all&regions=all'), 'html.parser')
-for row in soup.find_all('tr', class_='service-row', attrs={'data-product-slug' : True}):
-    for cell in row.find_all(attrs={'data-region-slug' : True}):
-        if 'Not available' not in cell.text:
-            print(cell['data-region-slug'])
-```
-
-```shell
-$ python azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
-# Azure services per region
 ```
