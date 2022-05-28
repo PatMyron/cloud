@@ -1,16 +1,22 @@
+# compute / memory unit prices by virtual machine type
 ![](img/ec2-unit-prices.png)
 ![](img/gcp-unit-prices.png)
 ![](img/azure-unit-prices.png)
+
+# product / feature regional availability
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
 ![](img/resources-per-region-by-region-launch-date.png)
+![](img/resources-per-service.png)
 ![](img/gcp-products-per-region.png)
 ![](img/azure-services-per-region.png)
+
+# availability zones per region
 ![](img/aws-azs-per-region.png)
 ![](img/gcp-azs-per-region.png)
 ![](img/azure-azs-per-region.png)
-![](img/resources-per-service.png)
 
+# instance type regional availability
 ```shell
 for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
 do
@@ -116,6 +122,8 @@ us-west-1
 us-west-2
 us-gov-west-1
 ```
+
+# CloudFormation / Terraform trivia
 
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
