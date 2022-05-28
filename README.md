@@ -1,3 +1,9 @@
+# IP addresses per region
+<img src="img/all-ip-addresses.png" width="26%"></img>
+<img src="img/aws-ip-addresses.png" width="24%"></img>
+<img src="img/gcp-ip-addresses.png" width="24%"></img>
+<img src="img/azure-ip-addresses.png" width="24%"></img>
+
 # compute / memory unit prices by virtual machine type
 ![](img/ec2-unit-prices.png)
 ![](img/gcp-unit-prices.png)
