@@ -19,6 +19,7 @@ do
 done
 
 # EC2 instance type regional availability
+# tl;dr: new regions do not offer old instance types
 
 r5:
 eu-north-1
