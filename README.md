@@ -32,7 +32,7 @@ for row in soup.find_all('tr', class_='service-row', attrs={'data-product-slug' 
 ```
 
 ```shell
-python azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
+python3 azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
 # Azure services per region
 ```
 </details>
