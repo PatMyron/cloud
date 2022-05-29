@@ -10,6 +10,8 @@
 ![](img/azure-unit-prices.png)
 
 # product / feature regional availability
+
+
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
 ![](img/resources-per-region-by-region-launch-date.png)
@@ -18,7 +20,7 @@
 ![](img/azure-services-per-region.png)
 
 <details>
-<summary>Azure services per region</summary>
+<summary><a href="https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all&regions=all">Azure services per region</a></summary>
 
 ```python
 from bs4 import BeautifulSoup
@@ -38,6 +40,13 @@ python3 azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
 </details>
 
 # availability zones per region
+
+https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
+
+https://cloud.google.com/about/locations/
+
+https://docs.microsoft.com/en-us/azure/availability-zones/az-overview
+
 ![](img/aws-azs-per-region.png)
 ![](img/gcp-azs-per-region.png)
 ![](img/azure-azs-per-region.png)
