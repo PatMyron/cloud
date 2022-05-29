@@ -138,6 +138,7 @@ us-gov-west-1
 ```
 
 # CloudFormation / Terraform trivia
+![](img/resources-per-provider.png)
 
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
