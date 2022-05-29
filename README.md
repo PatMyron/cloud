@@ -10,8 +10,6 @@
 ![](img/azure-unit-prices.png)
 
 # product / feature regional availability
-
-
 ![](img/services-per-region.png)
 ![](img/resources-per-region.png)
 ![](img/resources-per-region-by-region-launch-date.png)
