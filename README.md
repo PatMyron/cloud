@@ -1,8 +1,7 @@
 # [IP addresses per region](https://github.com/PatMyron/cloud/issues/11)
-<img src="img/all-ip-addresses.png" width="26%"></img>
-<img src="img/aws-ip-addresses.png" width="24%"></img>
-<img src="img/gcp-ip-addresses.png" width="24%"></img>
-<img src="img/azure-ip-addresses.png" width="24%"></img>
+<img src="img/aws-ip-addresses.png" width="33%"></img>
+<img src="img/gcp-ip-addresses.png" width="33%"></img>
+<img src="img/azure-ip-addresses.png" width="33%"></img>
 
 # [compute / memory unit prices by virtual machine type](https://instances.vantage.sh/)
 ![](img/ec2-unit-prices.png)
