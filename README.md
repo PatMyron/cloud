@@ -136,7 +136,7 @@ us-west-2
 us-gov-west-1
 ```
 
-# CloudFormation / Terraform trivia
+# [CloudFormation / Terraform trivia](https://twitter.com/iann0036/status/1537613464943796224)
 ![](img/resources-per-provider.png)
 
 ```shell
