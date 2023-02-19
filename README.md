@@ -36,7 +36,7 @@ python3 azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
 ```
 </details>
 
-# availability zones per region
+# [availability zones per region](https://github.com/PatMyron/cloud/issues/16)
 
 https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
 
