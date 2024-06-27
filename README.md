@@ -42,11 +42,9 @@ https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
 
 https://cloud.google.com/about/locations/
 
-https://docs.microsoft.com/en-us/azure/availability-zones/az-overview
+https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support
 
-![](img/aws-azs-per-region.png)
-![](img/gcp-azs-per-region.png)
-![](img/azure-azs-per-region.png)
+![](img/azs-per-region.png)
 
 # instance type regional availability
 ```shell
@@ -136,7 +134,7 @@ us-west-2
 us-gov-west-1
 ```
 
-# [CloudFormation / Terraform trivia](https://twitter.com/iann0036/status/1537613464943796224)
+# [CloudFormation / Terraform](https://twitter.com/iann0036/status/1537613464943796224)
 ![](img/resources-per-provider.png)
 
 ```shell
