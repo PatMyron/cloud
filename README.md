@@ -188,12 +188,12 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
    2 "PrimitiveItemType": "Boolean"
    1 "PrimitiveItemType": "Json"
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("Type": .*?),' | sort | uniq -c | sort -nr
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("Type": .*?),' | sort | uniq -c | sort -nr | head
  735 "Type": "List"
   48 "Type": "Map"
   ..
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("ItemType": .*?),' | sort | uniq -c | sort -nr
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("ItemType": .*?),' | sort | uniq -c | sort -nr | head
  108 "ItemType": "Tag"
  ...
 
@@ -209,7 +209,7 @@ $ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFo
 $ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | jq '.PropertyTypes | length'
 # property types
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | sort | uniq -c | sort -nr
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | sort | uniq -c | sort -nr | head
 # resource types per service
 
 $ diff -u <(curl -s https://s3.eu-west-1.amazonaws.com/cfn-resource-specifications-eu-west-1-prod/latest/CloudFormationResourceSpecification.json | jq '.ResourceTypes | keys' | jq -S) <(curl -s https://s3.us-west-2.amazonaws.com/cfn-resource-specifications-us-west-2-prod/latest/CloudFormationResourceSpecification.json | jq '.ResourceTypes | keys' | jq -S)
@@ -237,7 +237,7 @@ do
 done
 # resource types per region
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^        "(.*?)"' | sort | uniq -c | sort -nr | head -n 30
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^        "(.*?)"' | sort | uniq -c | sort -nr | head
  223 Name
  137 Tags
  107 Description
@@ -247,27 +247,7 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
   46 Id
   44 Key
   43 RoleArn
-  41 Enabled
-  25 Port
-  24 Parameters
-  24 InstanceType
-  22 Version
-  22 AvailabilityZone
-  21 SubnetId
-  20 SubnetIds
-  19 Values
-  19 SecurityGroupIds
-  18 VpcId
-  17 RoleARN
-  17 DomainName
-  16 KmsKeyId
-  16 ApiId
-  15 Protocol
-  15 MetricName
-  14 Path
-  14 ApplicationName
-  14 ApplicationId
-  13 Attributes
+  ..
 ```
 
 ```shell
