@@ -124,63 +124,54 @@ us-gov-west-1
 ![](img/resources-per-provider.png)
 
 ```shell
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '          "(.*?)"' | sort | uniq -c | sort -nr
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^( {6}( {4})?".*?")'  | sort | uniq -c | sort -nr
 # missing a few https://github.com/awsdocs/aws-cloudformation-user-guide/issues/4#issuecomment-503828259
-5443 UpdateType # property fields
-5443 Required
-5443 Documentation
-4283 PrimitiveType
-1493 Type
- 448 ItemType
- 445 DuplicatesAllowed
- 352 PrimitiveItemType
+30933           "UpdateType" # property fields
+30933           "Required"
+30933           "Documentation"
+21961           "PrimitiveType"
+12121           "Type"
+ 4123           "DuplicatesAllowed"
+ 3097           "ItemType"
+ 1795           "PrimitiveItemType"
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^      "(.*?)"' | sort | uniq -c | sort -nr
-1448 Documentation # resource fields
-1444 Properties
- 144 Attributes
-   4 UpdateType
-   4 Type
-   4 Required
-   4 ItemType
-   2 PrimitiveType
-   1 AdditionalProperties
+ 8413       "Documentation" # resource fields
+ 8398       "Properties"
+ 1070       "Attributes"
+   15       "UpdateType"
+   15       "Required"
+   11       "Type"
+   11       "ItemType"
+    4       "PrimitiveType"
+    1       "AdditionalProperties"
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("UpdateType": ".*?)"' | sort | uniq -c | sort -nr
-4030 "UpdateType": "Mutable
-1370 "UpdateType": "Immutable
-  47 "UpdateType": "Conditional
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("(DuplicatesAllowed|(Primitive(Item)?|Update)Type|Required)": .*?),' | sort | uniq -c | sort -k2,2 -k1nr
+  121 "DuplicatesAllowed": false
+   24 "DuplicatesAllowed": true
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("Required": .*?),' | sort | uniq -c | sort -nr
-3689 "Required": false
-1758 "Required": true
+ 1452 "PrimitiveItemType": "String"
+   23 "PrimitiveItemType": "Double"
+   19 "PrimitiveItemType": "Integer"
+    5 "PrimitiveItemType": "Json"
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("DuplicatesAllowed": .*?),' | sort | uniq -c | sort -nr
- 313 "DuplicatesAllowed": false
- 132 "DuplicatesAllowed": true
+ 2519 "PrimitiveType": "String"
+  521 "PrimitiveType": "Integer"
+  309 "PrimitiveType": "Boolean"
+   81 "PrimitiveType": "Json"
+   68 "PrimitiveType": "Double"
+    1 "PrimitiveType": "Long"
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("PrimitiveType": .*?),' | sort | uniq -c | sort -nr
-3046 "PrimitiveType": "String"
- 382 "PrimitiveType": "Integer"
- 368 "PrimitiveType": "Boolean"
-  99 "PrimitiveType": "Json"
-  63 "PrimitiveType": "Double"
-   8 "PrimitiveType": "Long"
-   4 "PrimitiveType": "Timestamp"
-   1 "PrimitiveType": "Map"
+22523 "Required": false
+ 8425 "Required": true
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("PrimitiveItemType": .*?),' | sort | uniq -c | sort -nr
- 349 "PrimitiveItemType": "String"
-   2 "PrimitiveItemType": "Boolean"
-   1 "PrimitiveItemType": "Json"
+21192 "UpdateType": "Mutable"
+ 4518 "UpdateType": "Immutable"
+  303 "UpdateType": "Conditional"
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("Type": .*?),' | sort | uniq -c | sort -nr | head
- 735 "Type": "List"
-  48 "Type": "Map"
-  ..
-
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("ItemType": .*?),' | sort | uniq -c | sort -nr | head
- 108 "ItemType": "Tag"
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '("(Item)?Type": .*?),' | sort | uniq -c | sort -nr | head
+4583 "Type": "List"
+ 729 "ItemType": "Tag"
+ 307 "Type": "Map"
  ...
 
 $ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | jq '.ResourceTypes' | jq 'with_entries(.value |= .Attributes)' | grep -v ': null' | grep -v 'Type": "'
@@ -189,11 +180,9 @@ $ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFo
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l
 # services
 
-$ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | jq '.ResourceTypes | length'
-# resource types
-
-$ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | jq '.PropertyTypes | length'
-# property types
+$ curl -s --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | jq '.ResourceTypes, .PropertyTypes | length'
+1371 # resource types
+7042 # property types
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | sort | uniq -c | sort -nr | head
 # resource types per service
@@ -223,16 +212,12 @@ do
 done
 # resource types per region
 
-$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^        "(.*?)"' | sort | uniq -c | sort -nr | head
- 223 Name
- 137 Tags
- 107 Description
-  84 Type
-  77 Arn
-  59 Value
-  46 Id
-  44 Key
-  43 RoleArn
+$ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^( {8}".*?")' | sort | uniq -c | sort -nr | head
+ 915         "Name"
+ 860         "Tags"
+ 482         "Arn"
+ 471         "Description"
+ 367         "Type"
   ..
 ```
 
