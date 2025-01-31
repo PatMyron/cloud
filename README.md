@@ -38,11 +38,9 @@ python3 azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
 
 # [availability zones per region](https://github.com/PatMyron/cloud/issues/16)
 
-https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
-
-https://cloud.google.com/about/locations/
-
-https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support
+* https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
+* https://cloud.google.com/about/locations/
+* https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support
 
 <img src="img/azs-per-region.png" width="70%"></img>
 
