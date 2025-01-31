@@ -52,14 +52,13 @@ do
   curl -s https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/$REGION/index.json | jq -r '.products[].attributes["instanceType"]' | sort -u | grep '\.' | sed 's/\..*//' | sort -u
 done
 
-# EC2 instance type regional availability
 # tl;dr: new regions do not offer old instance types
 
 cmr5 t3 (post-Feb 2018 regions without previous generation instance types):
+us-gov-east-1
 eu-north-1
 ap-east-1
-me-south-1
-us-gov-east-1
+...
 
 ------------
 
@@ -108,7 +107,7 @@ cn-north(west)-1
 
 ---------------
 
-cm1-5 t1-3 (9 oldest (pre-2013) regions with all previous generation instance types):
+cm1-5 t1-3 (9 oldest pre-2013 regions with all previous generation instance types):
 eu-west-1
 ap-northeast-1
 sa-east-1
