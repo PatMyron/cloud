@@ -57,7 +57,7 @@ done
 # EC2 instance type regional availability
 # tl;dr: new regions do not offer old instance types
 
-cmr5 t3 (newer regions with no previous generation instance types):
+cmr5 t3 (post-Feb 2018 regions without previous generation instance types):
 eu-north-1
 ap-east-1
 me-south-1
@@ -66,25 +66,18 @@ us-gov-east-1
 ------------
 
 r4-5:
-eu-west-3
-eu-west-2
+eu-west-[23]
 ca-central-1
 cn-northwest-1
 
 r3-5:
 ap-south-1
 eu-west-1
-ap-northeast-3
-ap-northeast-2
-ap-northeast-1
-ap-southeast-1
-ap-southeast-2
+ap-northeast-[123]
+ap-southeast-[12]
 eu-central-1
 sa-east-1
-us-east-1
-us-east-2
-us-west-1
-us-west-2
+us-(east|west)-[12]
 us-gov-west-1
 cn-north-1
 
@@ -92,16 +85,14 @@ cn-north-1
 
 cm4-5:
 ap-south-1
-eu-west-3
-eu-west-2
+eu-west-[23]
 us-east-2
 ca-central-1
 cn-northwest-1
 
 cm3-5:
 eu-central-1
-ap-northeast-3
-ap-northeast-2
+ap-northeast-[23]
 
 c3-5 m1-5:
 cn-north-1
@@ -110,27 +101,22 @@ cn-north-1
 
 t2-t3:
 ap-south-1
-eu-west-3
-eu-west-2
-ap-northeast-3
-ap-northeast-2
+eu-west-[23]
+ap-northeast-[23]
 ca-central-1
 eu-central-1
 us-east-2
-cn-north-1
-cn-northwest-1
+cn-north(west)-1
 
 ---------------
 
-cm1-5 t1-3 (oldest regions with all previous generation instance types):
+cm1-5 t1-3 (9 oldest (pre-2013) regions with all previous generation instance types):
 eu-west-1
 ap-northeast-1
 sa-east-1
-ap-southeast-1
-ap-southeast-2
+ap-southeast-[12]
 us-east-1
-us-west-1
-us-west-2
+us-west-[12]
 us-gov-west-1
 ```
 
