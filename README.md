@@ -4,17 +4,17 @@
 <img src="img/azure-ip-addresses.png" width="32%"></img>
 
 # [compute / memory unit prices by virtual machine type](https://instances.vantage.sh/)
-![](img/ec2-unit-prices.png)
-![](img/gcp-unit-prices.png)
-![](img/azure-unit-prices.png)
+<img src="img/ec2-unit-prices.png" width="100%"></img>
+<img src="img/gcp-unit-prices.png" width="49%"></img>
+<img src="img/azure-unit-prices.png" width="49%"></img>
 
 # product / feature regional availability
-![](img/services-per-region.png)
-![](img/resources-per-region.png)
-![](img/resources-per-region-by-region-launch-date.png)
-![](img/resources-per-service.png)
-![](img/gcp-products-per-region.png)
-![](img/azure-services-per-region.png)
+<img src="img/services-per-region.png" width="49%"></img>
+<img src="img/resources-per-region.png" width="49%"></img>
+<img src="img/resources-per-region-by-region-launch-date.png" width="49%"></img>
+<img src="img/resources-per-service.png" width="49%"></img>
+<img src="img/azure-services-per-region.png" width="49%"></img>
+<img src="img/gcp-products-per-region.png" width="49%"></img>
 
 <details>
 <summary><a href="https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all&regions=all">Azure services per region</a></summary>
@@ -44,7 +44,7 @@ https://cloud.google.com/about/locations/
 
 https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support
 
-![](img/azs-per-region.png)
+<img src="img/azs-per-region.png" width="70%"></img>
 
 # instance type regional availability
 ```shell
@@ -121,7 +121,7 @@ us-gov-west-1
 ```
 
 # [CloudFormation / Terraform](https://twitter.com/iann0036/status/1537613464943796224)
-![](img/resources-per-provider.png)
+<img src="img/resources-per-provider.png" width="70%"></img>
 
 ```shell
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^( {6}( {4})?".*?")'  | sort | uniq -c | sort -nr
