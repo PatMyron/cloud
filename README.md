@@ -48,7 +48,7 @@ python3 azure.py | sort | uniq -c | sort -nr | grep -v 'non-regional'
 ```shell
 for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
 do
-  echo $REGION
+  echo $REGION # /cn/ instead of /aws/ for cn- regions: https://github.com/vantage-sh/ec2instances.info/issues/330#issuecomment-518730823
   curl -s https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/$REGION/index.json | jq -r '.products[].attributes["instanceType"]' | sort -u | grep '\.' | sed 's/\..*//' | sort -u
 done
 
@@ -187,25 +187,15 @@ $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/Clou
 $ diff -u <(curl -s https://s3.eu-west-1.amazonaws.com/cfn-resource-specifications-eu-west-1-prod/latest/CloudFormationResourceSpecification.json | jq '.ResourceTypes | keys' | jq -S) <(curl -s https://s3.us-west-2.amazonaws.com/cfn-resource-specifications-us-west-2-prod/latest/CloudFormationResourceSpecification.json | jq '.ResourceTypes | keys' | jq -S)
 # resource type difference between two regions
 
-$ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::" | sort | uniq -c | wc -l | xargs echo -n; echo " $0"' | sort -nr
-for REGION in ap-east-1 me-south-1 af-south-1 eu-south-1 ap-southeast-3 us-gov-west-1 us-gov-east-1
-do
+$ for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
+do # .com.cn for cn- regions
   curl -s -N https://s3.$REGION.amazonaws.com/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l | xargs echo -n; echo " $REGION"
-done
-for REGION in cn-north-1 cn-northwest-1
-do
-  curl -s -N https://s3.$REGION.amazonaws.com.cn/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l | xargs echo -n; echo " $REGION"
 done
 # CloudFormation services per region
 
-$ curl -s -N https://raw.githubusercontent.com/patmyron/aws-cloudformation-user-guide/master/doc_source/cfn-resource-specification.md | pcregrep -o1 -o2 "|  (\w*-\w*-\w* ) .*//(.*?).cloudfront.*" | xargs -L1 bash -c 'curl -s -N --compressed https://$1.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 "::(.*)::[^.]*\"" | wc -l | xargs echo -n; echo " $0"' | sort -nr
-for REGION in ap-east-1 me-south-1 af-south-1 eu-south-1 ap-southeast-3 us-gov-west-1 us-gov-east-1
-do
+$ for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
+do # .com.cn for cn- regions
   curl -s -N https://s3.$REGION.amazonaws.com/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | wc -l | xargs echo -n; echo " $REGION"
-done
-for REGION in cn-north-1 cn-northwest-1
-do
-  curl -s -N https://s3.$REGION.amazonaws.com.cn/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | wc -l | xargs echo -n; echo " $REGION"
 done
 # resource types per region
 
