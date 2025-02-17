@@ -190,14 +190,12 @@ $ diff -u <(curl -s https://s3.eu-west-1.amazonaws.com/cfn-resource-specificatio
 $ for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
 do # .com.cn for cn- regions
   curl -s -N https://s3.$REGION.amazonaws.com/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::' | sort | uniq -c | wc -l | xargs echo -n; echo " $REGION"
-done
-# CloudFormation services per region
+done # CloudFormation services per region
 
 $ for REGION in $(aws ec2 describe-regions --query "Regions[*].RegionName" --output text)
 do # .com.cn for cn- regions
   curl -s -N https://s3.$REGION.amazonaws.com/cfn-resource-specifications-$REGION-prod/latest/CloudFormationResourceSpecification.json | pcregrep -o1 '::(.*)::[^.]*"' | wc -l | xargs echo -n; echo " $REGION"
-done
-# resource types per region
+done # resource types per region
 
 $ curl -s -N --compressed https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json | pcregrep -o1 '^( {8}".*?")' | sort | uniq -c | sort -nr | head
  915         "Name"
